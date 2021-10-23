@@ -1,0 +1,32 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .jumbotron {
+    text-align: center;
+    /*background-color: seagreen;*/
+    background-image: linear-gradient(cornflowerblue, seagreen, cornsilk);
+    color: black;
+    border-radius: 0;
+    border-bottom: 10px solid black;
+  }
+
+  .searchBtn {
+    border: 1px solid black;
+    margin: 15px 0px;
+    border-radius: 15px ;
+    background-color: #06AED5;
+    color: white;
+    height: 50px;
+  }
+  
+  .searchBtn i:hover {
+    font-size: 20px;
+    transition: all .3s ease-in-out;
+  }
+
+  .city-list {
+      border-top: 2px solid black;
+  }

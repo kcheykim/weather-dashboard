@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header class="jumbotron">
+        <h1 class="banner">Weather Dashboard</h1>
+    </header>
+
+        <section class="row d-flex container justify-content-evenly"> 
+
+       
+        <div class="city-container flex-col col-4">
+            <h2 class="searchTxt">Search for a City</h2>
+            <textarea class="input-city"></textarea>
+            <button type="submit" class="searchBtn">Search</button>
+            <div class="city-list">display the cities</div>
+        </div>
+            
+        <div class="main-info col-8">
+            <div class="currDay">
+                <h2 class="city-name">Display city name</h2>
+                <p class="currData">Grabing from Open Weather</p>
+            </div>
+            <div class="info5 d-flex">
+                <h2 class="forecast-title">5-Day Forecast:</h2>
+                <div class="day1 col-2">Grabing from Open Weather</div>
+                <div class="day2 col-2">Grabing from Open Weather</div>
+                <div class="day3 col-2">Grabing from Open Weather</div>
+                <div class="day4 col-2">Grabing from Open Weather</div>
+                <div class="day5 col-2">Grabing from Open Weather</div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./assets/js/script.js"></script>    
+</body>
+</html>
