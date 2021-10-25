@@ -13,34 +13,31 @@
         <h1 class="banner">Weather Dashboard</h1>
     </header>
 
-        <main class="container d-flex justify-content-evenly"> 
+    <main class="row container-fluid d-flex flex-row"> 
         
-        <section class="row side">
+        <div class="row side w-100"> 
        
-        <div class="col-4 city-container flex-column">
-            <div><h2 class="searchTxt">Search for a City</h2></div>
-            <div><input type="text" id="city"></input></div>
-            <div><button type="submit" class="searchBtn">Search</button></div>
-            <!-- <div class="cityList">display the cities</div> -->
-        </div>
-            
-        <div class="main-info col-8">
-            <div class="currDay">
-                <h2 class="city-name">Display city name</h2>
-                <p class="currData">Grabing from Open Weather</p>
+            <div class="col-4 city-container flex-column w-100 justify-content-around border border-primary">
+                <div><h2 class="searchTxt">Search for a City</h2>
+                <input type="text" class="input-group-text mb-3" id="city"></input>
+                <button type="submit" class="searchBtn btn-lg mb-3">Search</button>
+                </div>
             </div>
-            <div class="info5">
-                <h2 class="forecast-title">5-Day Forecast:</h2>
-                <div class="row day5">
-                <!-- <div class="day1 col-2">Grabing from Open Weather</div>
-                <div class="day2 col-2">Grabing from Open Weather</div>
-                <div class="day3 col-2">Grabing from Open Weather</div>
-                <div class="day4 col-2">Grabing from Open Weather</div>
-                <div class="day5 col-2">Grabing from Open Weather</div> -->
+            
+            <div class=" row main-info col-8 w-100">
+                <div class=" col-12 currDay">
+                    <h2 class="city-name"></h2>
+                    <p class="currData"></p>
+                </div>
+                <div class="col-12 info5">
+                    <h2 class="forecast-title">5-Day Forecast:</h2>
+                    <div class="row fiveCol border border-primary">
+
+                    </div>
+     
                 </div>
             </div>
         </div>
-    </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>    
