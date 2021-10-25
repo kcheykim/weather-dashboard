@@ -13,12 +13,11 @@ var dayArray = [];
 function searchCity(event) {
     event.preventDefault();
     var list, date, icon, temp, wind, humid;
+
+    if($("#city") == "") {return;}
     var cityName = $("#city").val();
 
-   // if(cityName != "") {storeNames(cityName);}
-   debugger;
    currDay(cityName);
-   debugger;
 
     fetch(apiUrl5 + cityName + unit + apiKey)
         .then(function(response){
