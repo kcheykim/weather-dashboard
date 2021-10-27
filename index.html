@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
 </head>
+
 <body>
     <header class="jumbotron">
         <h1 class="banner">Weather Dashboard</h1>
     </header>
 
-    <main class="row container-fluid d-flex flex-row"> 
-        
-        <div class="row side w-100"> 
-       
-            <div class="col-4 city-container flex-column w-100 justify-content-around border border-primary">
-                <div><h2 class="searchTxt">Search for a City</h2>
-                <input type="text" class="input-group-text mb-3" id="city"></input>
-                <button type="submit" class="searchBtn btn-lg mb-3">Search</button>
-                </div>
+    <main class="row d-flex container-fluid mx-3">
+
+
+        <div class="city-container">
+            <h2 class="searchTxt">Search for a City</h2>
+            <input type="text" class="input-group-text mb-3 w-100" id="city"></input>
+            <button type="submit" class="searchBtn btn-lg w-100  mb-3">Search</button>
+        </div>
+
+        <div class="col-8 main-info h-auto">
+            <div class="currDay">
+                <h2 class="city-name"></h2>
+                <p class="currData"></p>
             </div>
-            
-            <div class=" row main-info col-8 w-100">
-                <div class=" col-12 currDay">
-                    <h2 class="city-name"></h2>
-                    <p class="currData"></p>
-                </div>
-                <div class="col-12 info5">
-                    <h2 class="row forecast-title">5-Day Forecast:</h2>
-                    <div class="container-data border border-primary">
-                        <div class="row fiveCol border border-primary"></div>
-                    </div>
-                </div>
+            <div class="info5">
+                <h2 class="forecast-title">5-Day Forecast:</h2>
             </div>
+            <div class="container-data" style="justify-content: space-evenly;"> </div>
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>    
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
