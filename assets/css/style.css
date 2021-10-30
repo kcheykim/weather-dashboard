@@ -2,17 +2,20 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1;
-    background-color: linear-gradient(darkgoldenrod, lightyellow, cornsilk);
+    background-color: cornsilk;
 }
 
 .jumbotron {
     color: lighty;
     text-align: center;
-    /*background-color: seagreen;*/
     background-image: linear-gradient(cornflowerblue, seagreen, cornsilk);
     color: black;
     border-radius: 0;
     border-bottom: 10px solid black;
+}
+
+.main-container {
+    background-color: lightgoldenrodyellow;
 }
 
 .city-container,
@@ -22,7 +25,6 @@ body {
 
 .searchBtn {
     border: 1px solid black;
-    /* margin: 15px 0px; */
     border-radius: 15px;
     background-color: #06AED5;
     color: white;
@@ -37,8 +39,7 @@ body {
 .cityBtn {
     border: 1px solid black;
     border-radius: 15px;
-    /* margin: 15px 0px; */
-    background-color: darkgrey;
+    background-color: darkslategray;
     color: white;
     width: 75%;
     height: 40px;
@@ -49,3 +50,5 @@ body {
     font-size: 30px;
     transition: all .3s ease-in-out;
 }
+
+.holder {}

@@ -15,22 +15,22 @@
         <h1 class="banner">Weather Dashboard</h1>
     </header>
 
-    <main class="row d-flex container-fluid mx-3">
+    <main class="d-flex container-fluid mx-3">
 
 
-        <div class="city-container">
+        <div class="col-3 city-container p-1">
             <h2 class="searchTxt">Search for a City</h2>
-            <input type="text" class="input-group-text mb-3 w-100" id="city"></input>
-            <button type="submit" class="searchBtn btn-lg w-100  mb-3">Search</button>
+            <input type="text" class="input-group-text mb-4 w-75" id="city"></input>
+            <button type="submit" class="searchBtn btn-lg w-75 mb-4">Search</button>
         </div>
 
-        <div class="col-8 main-info h-auto">
-            <div class="currDay">
+        <div class="col-8 main-info h-auto p-1">
+            <div class="currDay mx-3 mb-4">
                 <h2 class="city-name"></h2>
-                <p class="currData"></p>
+                <p class="currData "></p>
             </div>
-            <div class="info5">
-                <h2 class="forecast-title">5-Day Forecast:</h2>
+            <div class="info5 mx-3 mb-4">
+                <!-- <h2 class="forecast-title">:</h2> -->
             </div>
             <div class="container-data" style="justify-content: space-evenly;"> </div>
         </div>
