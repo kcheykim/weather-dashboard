@@ -3,44 +3,33 @@ var apiUrl5 = "https://api.openweathermap.org/data/2.5/forecast?q=";
 var apiUrl1 = "https://api.openweathermap.org/data/2.5/weather?q=";
 var apiIcon = "https://openweathermap.org/img/wn/";
 var apiUvi = "https://api.openweathermap.org/data/2.5/onecall?lat=";
-//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 
 var submitBtnEl = $(".searchBtn"); //save button for input txt
 var cityBtnEl = $(".city-container");
+var historyBtnClick = 0;
 
 function displayWeather(event) {
     event.preventDefault();
-
     var cityName = ($("#city").val());
     if (!cityName) { return; }
-    if ($(".currDay").children().length > 0) {
-        $(".currDay").empty();
-        currDay(cityName);
-    } else { currDay(cityName); }
-
-    if ($(".holder").children().length > 0) {
-        debugger;
-        $(".holder").remove();
-        $(".info5").empty();
-        fiveDay(cityName);
-    } else { fiveDay(cityName); }
+    currDay(cityName);
 }
 
 function fiveDay(tname) {
+    $(".holder").remove();
+    $(".info5").empty();
     var infoEl = $(".container-data");
     var divContainer = $('<div class="holder bg-info rounded col-12 p-3 d-flex position-relative" style="justify-content: space-between;"></div>');
     var h2Title = $('<h2 class="forecast-title"></h2>').text('5-Day Forecast:');
 
     $(".info5").append(h2Title);
     infoEl.append(divContainer);
-
     fetch(apiUrl5 + tname + apiKey)
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function(data) {
                     var list = data.list;
                     for (var i = 0; i < list.length; i++) {
-
                         if ((list[i].dt_txt.split(" ")[1]) === "12:00:00") {
                             var divC = $('<div></div>');
                             var changeDt = moment.unix(list[i].dt).format("MM/DD/YY");
@@ -51,7 +40,6 @@ function fiveDay(tname) {
                             var wind = $('<p class=""></p>').text('Wind: ' + list[i].wind.speed + 'MPH');
                             var humid = $('<p class=""></p>').text('Humidity: ' + list[i].main.humidity + '%');
                             divC.append(date, icon, temp, wind, humid);
-                            // $(".holder").append(date, icon, temp, wind, humid);
                             $(".holder").append(divC);
                         }
                     }
@@ -64,17 +52,24 @@ function fiveDay(tname) {
 }
 
 function currDay(tName) {
+    $(".currDay").empty();
     fetch(apiUrl1 + tName + apiKey)
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function(data) {
-                    var keyId = data.dt;
+                    console.log(data);
+                    var keyId = data.id;
                     var latId = data.coord.lat;
                     var lonId = data.coord.lon;
                     displayUV(latId, lonId);
                     localStorage.setItem(keyId, tName);
-                    var nameBtn = $('<button class="cityBtn mb-4 w-75" data-id="' + keyId + '"type="submit"></button>').text(tName);
-                    $(".city-container").append(nameBtn);
+                    // cityList()
+                    if (historyBtnClick == 0) {
+                        var nameBtn = $('<button class="cityBtn mb-4 w-75" data-id="' + keyId + '" type="submit"></button>').text(tName);
+                        $(".city-container").append(nameBtn);
+                    } else {
+                        historyBtnClick = 0;
+                    }
                     var normDt = moment.unix(data.dt).format("MM/DD/YY");
                     var date = $('<h2 class="col"></h2>').text(tName + " (" + normDt + ")");
                     var iUrl = apiIcon + data.weather[0].icon + "@2x.png";
@@ -89,6 +84,7 @@ function currDay(tName) {
                 $(".currDay").append(message);
             }
         });
+    fiveDay(tName);
 }
 
 function displayUV(theLat, theLon) {
@@ -110,19 +106,27 @@ function displayUV(theLat, theLon) {
 }
 
 function cityList() {
+    // $(".cityBtn").remove();
     for (var a = 0; a < localStorage.length; a++) {
         var keyId = localStorage.key(a);
-        var nameBtn = $('<button class="cityBtn mb-4 w-75" type="submit"></button>').text(localStorage.getItem(keyId));
+        var nameBtn = $('<button class="cityBtn mb-4 w-75" data-id="' + keyId + '" type="submit"></button>').text(localStorage.getItem(keyId));
         $(".city-container").append(nameBtn);
     }
+}
+
+function displayCityBtn(event) {
+    event.preventDefault();
+    var historyName = $(this).text();
+    currDay(historyName);
+    historyBtnClick = 1;
 
 }
 
 $(document).ready(() => {
-    debugger;
+
     cityList();
-    debugger;
+
     submitBtnEl.on("click", displayWeather);
-    // cityBtnEl.on("click", displayWeather)
+    $(".cityBtn").on("click", displayCityBtn);
 
 });
