@@ -12,6 +12,13 @@ function displayWeather(event) {
     event.preventDefault();
     var cityName = ($("#city").val());
     if (!cityName) { return; }
+
+    $(".cityBtn").each(function() {
+        var name = $(this).text();
+        if (cityName == name) {
+            historyBtnClick = 1;
+        }
+    });
     currDay(cityName);
 }
 
@@ -19,7 +26,7 @@ function fiveDay(tname) {
     $(".holder").remove();
     $(".info5").empty();
     var infoEl = $(".container-data");
-    var divContainer = $('<div class="holder bg-info rounded col-12 p-3 d-flex position-relative" style="justify-content: space-between;"></div>');
+    var divContainer = $('<div class="holder bg-info rounded col-12 p-3 position-relative" style="justify-content: space-between;"></div>');
     var h2Title = $('<h2 class="forecast-title"></h2>').text('5-Day Forecast:');
 
     $(".info5").append(h2Title);
@@ -31,7 +38,7 @@ function fiveDay(tname) {
                     var list = data.list;
                     for (var i = 0; i < list.length; i++) {
                         if ((list[i].dt_txt.split(" ")[1]) === "12:00:00") {
-                            var divC = $('<div></div>');
+                            var divC = $('<div class="idividual"></div>');
                             var changeDt = moment.unix(list[i].dt).format("MM/DD/YY");
                             var date = $('<h3 class=""></h3>').text(changeDt);
                             var iconUrl = apiIcon + list[i].weather[0].icon + "@2x.png";
@@ -63,7 +70,6 @@ function currDay(tName) {
                     var lonId = data.coord.lon;
                     displayUV(latId, lonId);
                     localStorage.setItem(keyId, tName);
-                    // cityList()
                     if (historyBtnClick == 0) {
                         var nameBtn = $('<button class="cityBtn mb-4 w-75" data-id="' + keyId + '" type="submit"></button>').text(tName);
                         $(".city-container").append(nameBtn);
@@ -75,8 +81,8 @@ function currDay(tName) {
                     var iUrl = apiIcon + data.weather[0].icon + "@2x.png";
                     var icon = $('<img>').attr('src', iUrl);
                     var temp = $('<p class="col"></p>').text('Temp: ' + data.main.temp + ' F');
-                    var wind = $('<p class="col"></p>').text('Wind: ' + data.wind.speed + 'MPH');
-                    var humid = $('<p class="col"></p>').text('Humidity: ' + data.main.humidity + '%');
+                    var wind = $('<p class="col"></p>').text('Wind: ' + data.wind.speed + ' MPH');
+                    var humid = $('<p class="col mb-3"></p>').text('Humidity: ' + data.main.humidity + '%');
                     $(".currDay").append(date, icon, temp, wind, humid);
                 });
             } else {
@@ -93,9 +99,9 @@ function displayUV(theLat, theLon) {
             if (response.ok) {
                 response.json().then(function(data) {
                     var uviData = data.current.uvi;
-                    if (uviData < 3) { var uvIndex = $('<span class="bg-success"></span>').text('UV Index: ' + uviData); }
-                    if (uviData > 7) { var uvIndex = $('<span class="bg-danger"></span>').text('UV Index: ' + uviData); }
-                    if (uviData >= 3 && uviData <= 7) { var uvIndex = $('<span class="bg-warning></span>').text('UV Index: ' + uviData); }
+                    if (uviData < 3) { var uvIndex = $('<span class="p-3 bg-success"></span>').text('UV Index: ' + uviData); }
+                    if (uviData > 7) { var uvIndex = $('<span class="p-3 bg-danger"></span>').text('UV Index: ' + uviData); }
+                    if (uviData >= 3 && uviData <= 7) { var uvIndex = $('<span class="p-3 bg-warning"></span>').text('UV Index: ' + uviData); }
                     $(".currDay").append(uvIndex);
                 });
             } else {
@@ -123,10 +129,7 @@ function displayCityBtn(event) {
 }
 
 $(document).ready(() => {
-
     cityList();
-
     submitBtnEl.on("click", displayWeather);
     $(".cityBtn").on("click", displayCityBtn);
-
 });

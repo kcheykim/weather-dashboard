@@ -16,6 +16,8 @@ body {
 
 .main-container {
     background-color: lightgoldenrodyellow;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .city-container,
@@ -31,11 +33,6 @@ body {
     width: 75%;
 }
 
-.searchBtn i:hover {
-    font-size: 30px;
-    transition: all .3s ease-in-out;
-}
-
 .cityBtn {
     border: 1px solid black;
     border-radius: 15px;
@@ -46,7 +43,57 @@ body {
     font-size: 20px;
 }
 
-.cityBtn i:hover {
-    font-size: 30px;
-    transition: all .3s ease-in-out;
+.individual {
+    border: 2px solid black;
+}
+
+.holder {
+    display: flex;
+}
+
+footer {
+    justify-content: center;
+    padding: 50px;
+}
+
+
+/* Media Query starts */
+
+@media screen and (max-width: 980px) {
+    header {
+        padding-bottom: 0;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+    }
+    .main-container {
+        display: block;
+    }
+    .city-container {
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        display: inline-block;
+        font-size: 10px;
+    }
+    .main-info {
+        margin-top: 20px;
+        width: 100%;
+        justify-content: center;
+        display: inline-block;
+    }
+    .info5 {
+        margin-top: 20px;
+        width: 100%;
+        justify-content: space-around;
+        display: inline-block;
+    }
+    footer {
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+    }
+    .holder {
+        display: inline-block;
+    }
 }
