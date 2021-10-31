@@ -28,7 +28,7 @@ body {
 .searchBtn {
     border: 1px solid black;
     border-radius: 15px;
-    background-color: #06AED5;
+    background-color: midnightblue;
     color: white;
     width: 75%;
 }
@@ -45,6 +45,7 @@ body {
 
 .individual {
     border: 2px solid black;
+    background-image: linear-gradient(cornflowerblue, seagreen, cornsilk);
 }
 
 .holder {
